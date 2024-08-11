@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Input, VStack, useToast } from '@chakra-ui/react';
 import axios from 'axios';
-
+const apiUrl = process.env.REACT_APP_API_URL;
 const DocumentUpload: React.FC = () => {
   const [files, setFiles] = useState<FileList | null>(null);
   const [isPublic, setIsPublic] = useState<boolean>(true);
@@ -25,7 +25,7 @@ const DocumentUpload: React.FC = () => {
       });
       formData.append('isPublic', String(isPublic)); // Add public status
 
-      await axios.post('http://localhost:5000/api/documents/upload', formData, {
+      await axios.post(`${apiUrl}/api/documents/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Box, List, ListItem, Link, Button, Input, HStack } from '@chakra-ui/react';
 import axios from 'axios';
-
+const apiUrl = process.env.REACT_APP_API_URL;
 interface Document {
   _id: string;
   name: string;
@@ -17,7 +17,7 @@ const AllDocumentList: React.FC = () => {
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
-        const response = await axios.get<Document[]>('http://localhost:5000/api/documents/search', {
+        const response = await axios.get<Document[]>(`${apiUrl}/api/documents/search`, {
           params: { query: searchQuery },
         });
         console.log(response.data);

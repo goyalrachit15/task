@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Button, Input, VStack, useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+const apiUrl = process.env.REACT_APP_API_URL;
 const RegisterPage: React.FC = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +11,7 @@ const RegisterPage: React.FC = () => {
 
   const handleRegister = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/register', { username, password });
+      await axios.post(`${apiUrl}/api/auth/register`, { username, password });
       localStorage.setItem('username', username);
       toast({
         title: 'Registration successful',
