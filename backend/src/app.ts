@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(cors({
-  origin: 'https://task-2-yl6f.onrender.com/',
+  origin: 'https://task-dn7e.onrender.com/',
   credentials: true, 
 }));
 connectDB();
